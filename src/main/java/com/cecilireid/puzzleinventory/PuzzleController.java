@@ -5,9 +5,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("puzzles")
 public class PuzzleController {
+    private PuzzleRepository puzzleRepository;
 
-    public PuzzleController() {
-
+    public PuzzleController(PuzzleRepository puzzleRepository) {
+        this.puzzleRepository = puzzleRepository;
     }
 
     @PostMapping
