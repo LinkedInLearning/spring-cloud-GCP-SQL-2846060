@@ -1,5 +1,5 @@
-# COURSENAME
-This is the repository for the LinkedIn Learning course `[COURSENAME]`. The full course is available from [LinkedIn Learning](https://linkedin.com/learning/).
+# Spring Cloud GCP: Setting Up A Cloud SQL Database
+This is the repository for the LinkedIn Learning course `Spring Cloud GCP: Setting Up A Cloud SQL Database`. The full course is available from [LinkedIn Learning](https://linkedin.com/learning/).
 
 [![COURSENAME](COURSEIMAGE)](LICOURSEURL)
 
@@ -14,6 +14,13 @@ Some branches will have a beginning and an end state. These are marked with the 
 
 ## Installing
 1. To use these exercise files, you must have the following installed:
-	- [list of requirements for course]
+	- Java at least version 1.8
+	- Maven
+	- Favorite editor or IDE
+	- A terminal or way to run the Java application
+	- Postman or another GUI or CLI to send requests to an API
 2. Clone this repository into your local machine using the terminal (Mac), CMD (Windows), or a GUI tool like SourceTree.
-3. [Course-specific instructions]
+3. Checkout the beginning branch of a particular video
+4. Follow along with the video on specific changes
+5. `mvn clean install` to build the project and install dependencies
+6. `mvn spring-boot:run` to run the application locallymk
