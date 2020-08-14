@@ -13,7 +13,7 @@ public class PuzzleController {
 
     @PostMapping
     public Puzzle create(@RequestBody Puzzle inputPuzzle) {
-        return new Puzzle();
+        return puzzleRepository.save(inputPuzzle);
     }
 
     @GetMapping("/{id}")
