@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpStatus;
 import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 import org.springframework.web.client.HttpClientErrorException;
@@ -16,6 +17,7 @@ import static org.mockito.ArgumentMatchers.anyLong;
 
 @SpringJUnitConfig(PuzzleControllerUnitTests.Config.class)
 public class PuzzleControllerUnitTests {
+    @Configuration
     static class Config {
          @Bean
         public PuzzleController puzzleController() {
@@ -34,6 +36,14 @@ public class PuzzleControllerUnitTests {
     @Autowired
     private PuzzleRepository puzzleRepository;
 
+    @Test
+    public void testGet() {
+    }
+
+    @Test
+    public void testGetThrowsExceptions() {
+
+    }
     @Test
     public void testUpdateThrowsException() {
         Mockito.when(puzzleRepository.findById(anyLong())).thenReturn(Optional.empty());

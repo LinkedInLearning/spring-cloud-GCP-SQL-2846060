@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.MvcResult;
 
 import java.util.Optional;
 
@@ -28,6 +29,33 @@ public class PuzzleInventoryIntegrationTests {
 
     @Autowired
     private ObjectMapper mapper;
+
+    @Test
+    public void testGetNotFound() throws Exception {
+    }
+
+    @Test
+    public void testGet() throws Exception {
+        // Setup
+        Puzzle puzzle = new Puzzle();
+        puzzle.setName("Route 66");
+
+        // Run
+        MvcResult result = mockMvc.perform(post("/puzzles").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writeValueAsString(puzzle))).andExpect(status().isOk()).andReturn();
+        Puzzle expected = mapper.readValue(result.getResponse().getContentAsString(), Puzzle.class);
+
+        // TODO: Update this test to retrieve an "actual" puzzle that makes this test pass.
+        Puzzle actual = null;
+
+        // Assert
+        assertNotNull(actual);
+        assertEquals(expected.getName(), actual.getName());
+        assertEquals(expected.getId(), actual.getId());
+        assertEquals(expected.getDescription(), actual.getDescription());
+        assertEquals(expected.getPieces(), actual.getPieces());
+        assertEquals(expected.getPlaceOfPurchase(), actual.getPlaceOfPurchase());
+    }
+
 
     @Test
     public void testFindByName() throws Exception {
