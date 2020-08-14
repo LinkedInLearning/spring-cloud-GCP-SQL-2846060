@@ -7,6 +7,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Optional;
@@ -17,6 +18,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
+@ActiveProfiles("memory")
 public class PuzzleInventoryIntegrationTests {
     @Autowired
     private MockMvc mockMvc;
@@ -30,11 +32,11 @@ public class PuzzleInventoryIntegrationTests {
     @Test
     public void testFindByName() throws Exception {
         Puzzle expected = new Puzzle();
-        expected.setName("The Rialto Bridge");
+        expected.setName("Golden Gate Bridge");
 
         mockMvc.perform(post("/puzzles").contentType(MediaType.APPLICATION_JSON_VALUE).content(mapper.writeValueAsString(expected))).andExpect(status().isOk());
 
-        Page<Puzzle> puzzles = puzzleRepository.findByName("The Rialto Bridge", null);
+        Page<Puzzle> puzzles = puzzleRepository.findByName(expected.getName(), null);
 
         assertTrue(puzzles.getTotalElements() >= 1);
 
