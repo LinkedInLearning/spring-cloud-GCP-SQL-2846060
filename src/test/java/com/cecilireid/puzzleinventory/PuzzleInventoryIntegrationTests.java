@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MvcResult;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -32,6 +33,7 @@ public class PuzzleInventoryIntegrationTests {
 
     @Test
     public void testGetNotFound() throws Exception {
+        mockMvc.perform(get("/puzzles/100")).andExpect(status().isNotFound());
     }
 
     @Test
@@ -45,7 +47,8 @@ public class PuzzleInventoryIntegrationTests {
         Puzzle expected = mapper.readValue(result.getResponse().getContentAsString(), Puzzle.class);
 
         // TODO: Update this test to retrieve an "actual" puzzle that makes this test pass.
-        Puzzle actual = null;
+        MvcResult getResult = mockMvc.perform(get("/puzzles/" + expected.getId())).andExpect(status().isOk()).andReturn();
+        Puzzle actual = mapper.readValue(getResult.getResponse().getContentAsString(), Puzzle.class);
 
         // Assert
         assertNotNull(actual);

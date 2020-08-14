@@ -38,11 +38,23 @@ public class PuzzleControllerUnitTests {
 
     @Test
     public void testGet() {
+        Puzzle puzzle = new Puzzle();
+        puzzle.setName("SOme Puzzle");
+
+        Mockito.when(puzzleRepository.findById(anyLong())).thenReturn(Optional.of(puzzle));
+
+        Puzzle actual = puzzleController.read(100L);
+
+        assertEquals(puzzle, actual);
     }
 
     @Test
     public void testGetThrowsExceptions() {
+        Mockito.when(puzzleRepository.findById(anyLong())).thenReturn(Optional.empty());
 
+        HttpClientErrorException errorException = assertThrows(HttpClientErrorException.class, () -> puzzleController.read(100L));
+
+        assertEquals(HttpStatus.NOT_FOUND, errorException.getStatusCode());
     }
     @Test
     public void testUpdateThrowsException() {
