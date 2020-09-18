@@ -1,9 +1,8 @@
 # Spring Cloud GCP: Setting Up A Cloud SQL Database
 This is the repository for the LinkedIn Learning course `Spring Cloud GCP: Setting Up A Cloud SQL Database`. The full course is available from [LinkedIn Learning](https://linkedin.com/learning/).
 
-[![COURSENAME](COURSEIMAGE)](LICOURSEURL)
-
 [COURSEDESCRIPTION]
+Cloud SQL is one of the most frequently used products on Google Cloud Platform (GCP). This fully managed relational database service for MySQL, PostgreSQL, and SQL Server provides an alternative to configuring and hosting your own database. Plus, it's relatively easy to integrate Cloud SQL with a Spring Boot app, due to the use of Spring Data Cloud SQL and the Spring Data Java Persistence API. In this course, learn how to set up a Cloud SQL database and effectively test your Spring Boot application. Instructor Cecili Reid discusses why and when to leverage a hosted cloud technology. Cecili steps through how to set up your environment and application to use Cloud SQL, as well as how to connect to the database and send requests. To wrap up, she covers how to incorporate unit and integration testing while mitigating costs.
 
 ## Instructions
 This repository has branches for each of the videos in the course. You can use the branch pop up menu in github to switch to a specific branch and take a look at the course at that stage, or you can add `/tree/BRANCH_NAME` to the URL to go to the branch you want to access.
